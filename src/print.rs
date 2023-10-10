@@ -1,3 +1,40 @@
+use std::fmt;
+
+#[derive(Debug)]
+struct MinMax(i64, i64);
+
+// Implement `Display` for `MinMax`
+impl fmt::Display for MinMax {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "({}, {})", self.0, self.1)
+    }
+}
+
+// Implement `Display` for `Point2D`
+#[derive(Debug)]
+struct Point2D {
+    x: f64,
+    y: f64,
+}
+
+impl fmt::Display for Point2D {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "x: {}, y: {}", self.x, self.y)
+    }
+}
+
+#[derive(Debug)]
+struct Complex {
+    real: f64,
+    imag: f64,
+}
+
+impl fmt::Display for Complex {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{} + {}i", self.real, self.imag)
+    }
+}
+
 pub fn run() {
     /*
     This is a comment
@@ -42,4 +79,24 @@ pub fn run() {
     println!("PI: {:.3}", pi);
     println!("PI: {1:.0$}", 3, pi);
     println!("PI: {:.*}", 3, pi);
+
+    // Pretty printing
+    println!("The name is {:#?}", "Abdullahi");
+
+    // Printing MinMax with Display
+    let minmax = MinMax(0, 14);
+    println!("Display: {}", minmax);
+
+    // Printing Point2D
+    let point1 = Point2D { x: 2.0, y: 4.0 };
+    println!("Display: {}", point1);
+    println!("Debug: {:?}", point1);
+
+    // Printing for Complex
+    let complex = Complex {
+        real: 2.4,
+        imag: 4.4,
+    };
+    println!("Display: {}", complex);
+    println!("Debug: {:?}", complex);
 }
